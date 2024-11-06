@@ -2,6 +2,7 @@
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
+Test
 -->
 <html>
     <head>
@@ -11,7 +12,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
     <body>
         <?php
         // put your code here
-        echo "gotta be chuggin' the ocean";
+
+        echo "you gotta be chuggin' the ocean";
         
         echo "test";
          
