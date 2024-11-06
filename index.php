@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
     <body>
         <?php
         // put your code here
-        echo "gotta be chuggin' me";
+        echo "gotta be chuggin' the ocean";
         
         echo "test";
          
