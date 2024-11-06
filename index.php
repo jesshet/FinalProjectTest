@@ -12,7 +12,10 @@ Test
     <body>
         <?php
         // put your code here
-        echo "gotta be chuggin' me"
+        echo "gotta be chuggin' me";
+        
+        echo "test";
+         
         ?>
     </body>
 </html>
