@@ -1,0 +1,188 @@
+*{
+    color: white;
+}
+
+body{
+    background-color: #1d1f21;
+}
+
+#headerpanel{
+    text-align: center;
+    background-color: #282a2e;
+    margin: 20px, 20px;
+    min-height: 5%;
+    padding: 12px;
+}
+
+#mainpanel{
+    text-align: center;
+    background-color: #282a2e;
+    margin-top: 2%, 0%;
+    height: 94%;
+}
+
+#mainpanel img{
+    margin-top: 2%;
+    border-radius: 50px;
+}
+
+#mainpanel .row .col{
+    margin-top: 7%;
+}
+
+
+
+/* login form popup */
+.form-popup{
+  display:none;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.form-popup .closebtn{
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 32px;
+  color: #818181;
+  text-decoration: none;
+}
+.form-popup h1{
+  text-align: center;
+  padding: 10px;
+}
+.form-popup label{
+  padding-bottom: 10px;
+}
+.form-popup input[type=text],
+.form-popup input[type=password]{
+  width: 100%;
+  background-color: rgb(28,28,28);
+  padding: 10px;
+  border-color: mediumslateblue;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+.form-popup .forgot{
+  color: #818181;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 30px;
+}
+.form-popup{
+  padding: 70px 100px 70px 100px;
+  background-color: rgba(28,28,28,200);
+  border-radius: 20px;
+}
+.form-popup input[type=submit] {
+  background-color: mediumslateblue;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 1;
+}
+.form-popup input[type=submit]:hover,
+.form-popup .forgot a{
+  opacity: 0.8;
+}
+
+
+/* For Mobile (Smaller Screens) */
+@media only screen and (max-width: 900px){
+  #main{
+    height: 100vh;
+  }
+
+  .sidebar {
+    height: 100%; 
+    width: 0px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #1c1c1c; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.1s; 
+  }
+}
+
+/* For Desktop */
+@media only screen and (min-width: 900px){
+#main{
+    margin-left: 350px;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    height: 100%; 
+    width: 350px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #1c1c1c; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.1s; 
+  }
+} 
+  /* side bar links */
+  .sidebar a {  
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.1s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* The button used to open the sidebar */
+  #openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 0;
+    background-color: #1c1c1c;
+    color: white;
+    width: 50px;
+    height: 40px;
+    top: 40px;
+    left: 40px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+
+
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .1s; /* If you want a transition effect */
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
