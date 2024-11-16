@@ -5,6 +5,7 @@ function openNav() {
   document.getElementById("sidebar").style.width = "350px";
   if(!mobile.matches){
       document.getElementById("main").style.marginLeft = "350px";
+      document.getElementById("currency").style.marginLeft = "5px";
   }
 }
   
@@ -12,14 +13,29 @@ function openNav() {
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
+  document.getElementById("currency").style.marginLeft = "95px";
 }
 
 
 /* Open the form for logging in */
-function openForm() {
+function openLoginForm() {
   document.getElementById("loginform").style.display="block";
+  document.getElementById("popupOverlay").style.display="block";
 }
 
-function closeForm() {
+function closeLoginForm() {
   document.getElementById("loginform").style.display="none";
+  document.getElementById("popupOverlay").style.display="none";
+}
+
+
+/* Open the form for registration */
+function openRegisterForm() {
+  document.getElementById("registerform").style.display="block";
+  document.getElementById("popupOverlay").style.display="block";
+}
+
+function closeRegisterForm() {
+  document.getElementById("registerform").style.display="none";
+  document.getElementById("popupOverlay").style.display="none";
 }
