@@ -203,7 +203,7 @@ newGame = function Game(bet){
 		game.showHand(dealer);
 		while(dealer.getHandValue() < 17){
 			//on player stay, house plays until its time to call gameOver method
-			game.draw(dealer);
+                            game.draw(dealer);
 		}
 		game.gameOver(bet, p1, dealer);
 	}
