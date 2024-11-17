@@ -1,66 +1,85 @@
 body{
 	font-family: Garamond;
 }
-#mainPageContent{/*This sets a div for the main page content in order to center the game board. Probably a better way to do this once we incorporate into the full site*/
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 #dealerHand{
-	position: relative;
-	top: 75px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+	top: 20px
 }
 #playerHand{
-	position: relative;
-	top: 175px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+	bottom: 20px;
 }
 #newGameBTN{
 	position: absolute;
 	left: 50%;
 	margin-left: -125px;
-	bottom: 20px;
+	bottom: -150px;
 	z-index: 50;
 }
 #gameCTRLS{
 	position: absolute;
 	width: 100%;
-	bottom: 20px;
+	bottom: -150px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 #game{/*The game board*/
 	position: fixed;
-	top: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 150px;
 	color: gold;
-	width: 1024px;
-	height: 768px;
-	border-style: inset;
+	border-style: outset;
+	border-width: 10px;
+	border-radius: 20px;
+	border-color: #b3856d;
 	background-image: url("../imgs/table.jpg");
 	background-repeat: repeat;
 }
+
+ /* For Small Screens */
+ @media only screen and (min-width: 0px) and (max-width: 730px){
+	#game{
+		width: 80%;
+		height: 70%;
+		top: 150px;
+		left: 10%;
+	}
+ }
+ /* For Medium Screens */
+ @media only screen and (min-width: 730px) and (max-width: 1400px){
+	#game{
+		width: 80%;
+		top: 150px;
+		height: 70%;
+		left: 10%;
+	}
+ }
+ /* For large Screens */
+ @media only screen and (min-width: 1400px){
+	#game{
+		width: 60%;
+		height: 65%;
+		left: 20%;
+	}
+ }
 
 .gameCTRL{
 	visibility: hidden;
 }
 .gameBTN:hover{
-	background-color: #04AA6D; /* Green */
-	color: white;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	opacity: 0.8;
 }
 .gameBTN{
-	background-color: gold;
+	background-color: #f34a55;
 	width: 250px;
 	padding: 10px;
 	margin: 10px;
 	font-size: 20px;
-	border-radius: 12px;
+	border-width: 0;
 	cursor: pointer;
 	/*transition: .4s; cool effect but messes up load TODO: make this work properly*/
 }
@@ -68,15 +87,16 @@ body{
 	position: absolute;
 	width: 100%;
 	left: 0px;
-	bottom: 115px;
+	bottom: -90px;
 	text-align: center;
 	font-size: 2em;
 }
 
 #deck{
+	z-index: -1;
 	position: absolute;
 	left: 50px;
-	top: 50px;
+	vertical-align: middle;
 	width: 100px;
 }
 
@@ -152,6 +172,7 @@ body{
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  transition: 0.0s;
 }
 
 .card-front {
