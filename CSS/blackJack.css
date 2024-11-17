@@ -132,18 +132,20 @@ body{
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%; 
-  background: #04AA6D;
+  background: url('../imgs/dollarSign.png');
+  background-size: cover;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: #04AA6D;
+  background: url('../imgs/dollarSign.png');
+  background-size: cover;
   cursor: pointer;
 }
 
