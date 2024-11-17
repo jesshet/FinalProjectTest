@@ -17,14 +17,15 @@ a{
     min-height: 5%;
     padding: 12px;
 }
+
 #headerpanel i{
   font-size: 20px;
 }
+
 #headerpanel #currency{
   bottom: 3px;
   margin-left: 95px;
   text-align: left;
-  transition: .1s;
 }
 
 #headerpanel span{
@@ -65,18 +66,13 @@ a{
   min-height: 89vh;
 }
 
-#gamePanels{
-  margin: auto;
-  margin-top: 3%;
-  padding: 0 10%;
-}
-
 .gPanel{
   margin: auto;
   padding: 0px 10px;
 }
 
 .gPanel img{
+  margin-top: 40px;
   width: 350px;
 }
 
@@ -102,28 +98,57 @@ a{
   background-color: #f34a55;
 }
 
-
-
-
-
- /* Background image for diff sizes */
+ /* For Small Screens */
  @media only screen and (min-width: 0px) and (max-width: 730px){
     #mainBackground{
       top: 0px;
     }
+    #gamePanels{
+      margin: auto;
+      margin-top: 3%;
+      padding: 0 10%;
+    }
+    
  }
- @media only screen and (min-width: 730px) and (max-width: 1700px){
+ /* For Medium Screens */
+ @media only screen and (min-width: 730px) and (max-width: 1400px){
     #mainBackground{
       top:0px;
     }
+    #gamePanels{
+      margin: auto;
+      margin-top: 3%;
+      padding: 0 5%;
+    }
+    
  }
- 
- @media only screen and (min-width: 1700px){
+ /* For large Screens */
+ @media only screen and (min-width: 1400px) and (max-width: 1820px){
     #mainBackground{
       top:-350px;
     }
     #bgGrad{
       top:-200px
+    }
+    #gamePanels{
+      margin: auto;
+      margin-top: 3%;
+      padding: 0 0%;
+    }
+    
+ }
+ /* For Xl Screens */
+ @media only screen and (min-width: 1820px){
+    #mainBackground{
+      top:-350px;
+    }
+    #bgGrad{
+      top:-200px
+  }
+    #gamePanels{
+      margin: auto;
+      margin-top: 3%;
+      padding: 0 10%;
     }
  }
 

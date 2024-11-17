@@ -119,6 +119,7 @@ class PureFabricationCardDisplayClassCuzVlad{ //this class just creates divs tha
 		card.appendChild(back);
 		card.appendChild(front);
 		document.getElementById(player.name+"Cards").appendChild(card);
+		dealAnim(card);
 	}
 }
 //controller class
@@ -234,6 +235,25 @@ function endGame(bet, p1, dealer){
 		console.log(`Push! You get your bet back.`);
 	}
 	return bet; //TODO: ?might not be needed? need to add bet to user account balance (and subtract from on new game start) - even on a loss should add, as bet is set to 0
+}
+
+function dealAnim(card){
+	let deck = document.getElementById("deck")
+
+	let firstY = $(deck).offset().top;  	
+	let secondY = $(card).offset().top;
+
+	let firstX = $(deck).offset().left;  	
+	let secondX = $(card).offset().left;
+
+	var distanceY = parseInt(firstY) - parseInt(secondY);
+	var distanceX = parseInt(firstX) - parseInt(secondX);
+
+	card.style.display ="none";
+	$(card).animate({left: distanceX, top: distanceY}, 1);
+
+	card.style.display ="inline-block";
+	$(card).animate({left: '0', top: '0'}, 'fast');
 }
 
 
