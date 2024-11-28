@@ -235,6 +235,7 @@ function endGame(bet, p1, dealer){
 		console.log(`Push! You get your bet back.`);
 	}
 	return bet; //TODO: ?might not be needed? need to add bet to user account balance (and subtract from on new game start) - even on a loss should add, as bet is set to 0
+        //openEndGameWindow();
 }
 
 function dealAnim(card){
