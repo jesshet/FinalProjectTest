@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/FinalProjectTest/updateBalanceSQL.php</file>
             <file>file:/var/www/html/FinalProjectTest/someFunctions.js</file>
-            <file>file:/var/www/html/FinalProjectTest/CSS/blackJack.css</file>
-            <file>file:/var/www/html/FinalProjectTest/blackJack.js</file>
-            <file>file:/var/www/html/FinalProjectTest/blackJack.html</file>
-            <file>file:/var/www/html/FinalProjectTest/imgs/table.jpg</file>
+            <file>file:/var/www/html/FinalProjectTest/MainPage.php</file>
+            <file>file:/var/www/html/FinalProjectTest/index.php</file>
+            <file>file:/var/www/html/FinalProjectTest/userLoginSQL.php</file>
+            <file>file:/var/www/html/FinalProjectTest/userRegisterSQL.php</file>
             <file>file:/var/www/html/FinalProjectTest/MainPage.html</file>
         </group>
     </open-files>

@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['email'])){
+    //check if a session is active (user logged in)
+    //$balance = $_SESSION['balance'];
+    $balanceString = "$ ".number_format((float)$_SESSION['balance'], 2);
+    $welcomeString = "Welcome, ".$_SESSION['fname']; //This needs to be used somewhere still
+}else{
+    $balanceString = "Please Log In";
+}
+
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -41,7 +53,7 @@
                      <!--Currency Tracking-->
                      <div class="col pt-1" id="currency">
                         <i class="bi bi-cash-coin"></i>
-                        <span id="currentAmount">1,000,000.00</span>
+                        <span id="currentAmount"><?php echo $balanceString;?></span>
                     </div>
                     <div class="col" id="userhub">
                         <!-- Login/Signup -->
@@ -158,23 +170,23 @@
             <!--Popup For Registration-->
             <div class="form-popup" id="registerform">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeRegisterForm()">&times;</a>
-                <form action="#" method="POST">
+                <form action="userRegisterSQL.php" method="POST">
                     <h1>Join Us Today!</h1>
 
                     <label for="fname"><b>First name</b></label>
-                    <input type="text" placeholder="First name" id="fname" required> <br> 
+                    <input type="text" placeholder="First name" name="fname" id="fname" required> <br> 
 
                     <label for="lname"><b>Last name</b></label>
-                    <input type="text" placeholder="Last name" id="lname" required> <br> 
+                    <input type="text" placeholder="Last name" name="lname" id="lname" required> <br> 
 
                     <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Enter Email" id="email" required> <br> 
+                    <input type="email" placeholder="Enter Email" name="email" id="email" required> <br> 
                     
                     <label for="pass"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" id="pass" required> <br> 
+                    <input type="password" placeholder="Enter Password" name="password" id="pass" required> <br> 
 
                     <label for="dateOfBirth"><b>Date of Birth</b></label> <br>
-                    <input class="dateSelector" type="number"min="1"max="31"placeholder="1"> <!--Day Selector-->
+                    <input class="dateSelector" name="dayOfBirth" type="number"min="1"max="31"placeholder="1"> <!--Day Selector-->
                     <select name="month" id="month">
                         <option value="1">Jan</option>
                         <option value="2">Feb</option>
@@ -189,7 +201,7 @@
                         <option value="11">Nov</option>
                         <option value="12">Dec</option>
                     </select> <!--Month Selector-->
-                    <input class="dateSelector" type="number"min="1900"max="2025"placeholder="2024"> <!--Year Selector-->
+                    <input class="dateSelector" name="yearOfBirth" type="number"min="1900"max="2025"placeholder="2024"> <!--Year Selector-->
 
                     <input type="submit"value="Register">
 
