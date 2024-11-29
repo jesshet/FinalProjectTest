@@ -1,0 +1,103 @@
+*{
+    color: white;
+    font-family: 'Garamond';
+}
+
+body{
+    background-color: #1c1c1c;
+}
+
+a{
+  text-decoration: none;
+  color: grey;
+}
+
+#logoutBox{
+    background-color: #1c1c1c;
+    padding: 50px 75px 30px 75px;
+    border-radius: 20px;
+}
+
+#mainpanel{
+    z-index: 3;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+}
+
+#mainpanel h1{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+#mainBackground{
+    z-index: -4;
+    position: fixed;
+    left: 0px;
+    width: 100vw;
+  
+    filter: blur(4px);
+  }
+  
+  #bgGrad{
+    z-index: -3;
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    width: 100vw;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), #1c1c1c);
+  }
+
+  .overlay {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5); 
+  }
+
+  /* For Small Screens */
+ @media only screen and (min-width: 0px) and (max-width: 730px){
+    #mainBackground{
+      top: 0px;
+    }
+    #gamePanels{
+      margin: auto;
+      margin-top: 3%;
+      padding: 0 10%;
+    }
+    
+ }
+
+ /* For Medium Screens */
+ @media only screen and (min-width: 730px) and (max-width: 1400px){
+    #mainBackground{
+      top:0px;
+    }
+    
+ }
+
+ /* For large Screens */
+ @media only screen and (min-width: 1400px) and (max-width: 1820px){
+    #mainBackground{
+      top:-350px;
+    }
+    #bgGrad{
+      top:-200px
+    }
+ }
+
+ /* For Xl Screens */
+ @media only screen and (min-width: 1820px){
+    #mainBackground{
+      top:-350px;
+    }
+    #bgGrad{
+      top:-200px
+  }
+ }
