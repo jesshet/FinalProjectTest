@@ -22,6 +22,7 @@ if(isset($_SESSION['email'])){
         <link href="CSS/PageStyle.css"rel="stylesheet">
         <link href="CSS/PopUp.css"rel="stylesheet">
         <link href="CSS/SideBar.css"rel="stylesheet">
+        <link rel="stylesheet" href="./CSS/blackJack.css">
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -71,74 +72,34 @@ if(isset($_SESSION['email'])){
             <img src="Resources/Background(Main).png" class="Background" id="mainBackground">
 
             <!--Main Panel-->
-            <div class="container-fluid overflow-hidden mt-4" id="mainpanel">
+            <div class="container-fluid" id="mainpanel">
                 <div class="row">
-                    <!--Text-->
-                    <div id="mainText" class="col">
-                        <img src="Resources/casino-chip.png" width="250px">
-                        <h1>Welcome To The Online Virtual Casino!</h1>
-                        <h5> Try your luck at online versions of some classic casino games.<h5>
-                        <h5> Sign in to begin playing.</h5>
-                    </div>
-
-                    <!--Ad Panel-->
-                    <!-- <div id="adpanel" class="fixed-right">
-                        <div id="Slideshow" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
-                                    <img src="Resources/Skyscraper1.png" alt="First Slide">
-                                </div>
-                            
-                                <div class="carousel-item">
-                                    <img src="Resources/Skyscraper2.png" alt="Second Slide">
-                                </div>
-        
-                                <div class="carousel-item">
-                                    <img src="Resources/Skyscraper3.png" alt="Third Slide">
-                                </div>
+                    <div class="col-12">
+                        <div id="game"><!-- the game board -->
+                            <img id="deck" src="./imgs/cardBack.png"> <!-- the deck of cards -->
+                            <!-- Divs to send drawn cards with DOM: (probably dont touch these or else js code might need updates)-->
+                            <div id="dealerHand">
+                                <div id="dealerCards"></div>
                             </div>
-                        </div>
-                    </div> -->
-                </div>
-
-                <div class="row pt-4 gy-4" id="gamePanels">
-                    <div class="col-xxl-3 col-lg-6 col-md-12 gPanel" id="blackjack">
-                        <img src="Resources/BlackJackPreview.png">
-                        <div class="textArea ">
-                            <h1>Blackjack</h1>
-                            <p class="pt-2 pb-4">Blackjack is a card game where players aim to have a hand value closer to 21 than the dealer's, without exceeding 21.</p>
-                            <a href="./blackJack.php" class="link">Play Now</a>
-                        </div>
-                    </div>
-
-                    <div class="col-xxl-3 col-lg-6 col-md-12 gPanel" id="blackjack">
-                        <img src="Resources/Roulette.png">
-                        <div class="textArea">
-                            <h1>Roulette</h1>
-                            <p class="pt-2 pb-4">Roulette is a casino game where players bet on where a ball will land on a spinning wheel divided into numbered pockets.</p>
-                            <a href="" class="link">Play Now</a>
-                        </div>
-                    </div>
-
-                    <div class="col-xxl-3 col-lg-6 col-md-12 gPanel" id="blackjack">
-                        <img src="Resources/DiceGame.png">
-                        <div class="textArea">
-                            <h1>Craps</h1>
-                            <p class="pt-2 pb-4">Craps is a dice game where players bet on the outcome of the roll, or a series of rolls, of a pair of dice.</p>
-                            <a href="" class="link">Play Now</a>
-                        </div>
-                    </div>
-
-                    <div class="col-xxl-3 col-lg-6 col-md-12 gPanel" id="blackjack">
-                        <img src="Resources/Slots.png">
-                        <div class="textArea">
-                            <h1>Slots</h1>
-                            <p class="pt-2 pb-4">Slots are casino games where players spin reels with various symbols, aiming to align them to win prizes.</p>
-                            <a href="" class="link">Play Now</a>
-                        </div>
+                            <div id="playerHand">
+                                <div id="playerCards"></div>
+                            </div>
+                            
+                            <!-- Controls: -->
+                            <div id="startGameCTRLS">
+                                <div class="slidecontainer">
+                                    <p id="betAmountLBL">Bet Amount: $500!</p>
+                                    <input type="range" min="5" max="10000" value="500" class="slider" id="betSlider" name="betSlider">
+                                </div>
+                                <button type="button" id="newGameBTN" class="gameBTN" class="gameBTN" onclick="newGame(document.getElementById('betSlider').value)">Start Game!</button><br><br>
+                            </div>
+                            <div id="gameCTRLS">
+                                <button type="button" id="hitMeBTN" class="gameCTRL gameBTN" onclick="playerDraw()" disabled="true">Hit Me</button>
+                                <button type="button" id="stayBTN" class="gameCTRL gameBTN" onclick="stay()" disabled="true">Stay</button>
+                            </div>
+                        </div><!-- end of game board -->
                     </div>
                 </div>
-                
             </div>
 
 
@@ -149,16 +110,16 @@ if(isset($_SESSION['email'])){
             <!--Popup For Login-->
             <div class="form-popup" id="loginform">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeLoginForm()">&times;</a>
-                <form action="userLoginSQL.php"method="POST">
+                <form action="#"method="#">
                     <h1>Login</h1>
                     <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" id="email" required> <br> 
+                    <input type="text" placeholder="Enter Email" id="email" required> <br> 
                     
                     <label for="pass"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" id="pass" required> <br> <br>
+                    <input type="password" placeholder="Enter Password" id="pass" required> <br> <br>
 
-                    <input type="checkbox" name="stayLoggedIn" value="true"> Keep me logged in? <br> 
-                    <input type="submit" value="Login">
+                    <input type="checkbox" value="true"> Keep me logged in? <br> 
+                    <input type="submit"value="Login">
 
                     <div class="forgot">
                         <a href="https://letmegooglethat.com/?q=you+are+a+fucking+moron" target="blank">Forgot password?</a> <br> <br>
@@ -170,23 +131,23 @@ if(isset($_SESSION['email'])){
             <!--Popup For Registration-->
             <div class="form-popup" id="registerform">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeRegisterForm()">&times;</a>
-                <form action="userRegisterSQL.php" method="POST">
+                <form action="#"method="#">
                     <h1>Join Us Today!</h1>
 
                     <label for="fname"><b>First name</b></label>
-                    <input type="text" placeholder="First name" name="fname" id="fname" required> <br> 
+                    <input type="text" placeholder="First name" id="fname" required> <br> 
 
                     <label for="lname"><b>Last name</b></label>
-                    <input type="text" placeholder="Last name" name="lname" id="lname" required> <br> 
+                    <input type="text" placeholder="Last name" id="lname" required> <br> 
 
                     <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Enter Email" name="email" id="email" required> <br> 
+                    <input type="email" placeholder="Enter Email" id="email" required> <br> 
                     
                     <label for="pass"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" id="pass" required> <br> 
+                    <input type="password" placeholder="Enter Password" id="pass" required> <br> 
 
                     <label for="dateOfBirth"><b>Date of Birth</b></label> <br>
-                    <input class="dateSelector" name="dayOfBirth" type="number"min="1"max="31"placeholder="1"> <!--Day Selector-->
+                    <input class="dateSelector" type="number"min="1"max="31"placeholder="1"> <!--Day Selector-->
                     <select name="month" id="month">
                         <option value="1">Jan</option>
                         <option value="2">Feb</option>
@@ -201,7 +162,7 @@ if(isset($_SESSION['email'])){
                         <option value="11">Nov</option>
                         <option value="12">Dec</option>
                     </select> <!--Month Selector-->
-                    <input class="dateSelector" name="yearOfBirth" type="number"min="1900"max="2025"placeholder="2024"> <!--Year Selector-->
+                    <input class="dateSelector" type="number"min="1900"max="2025"placeholder="2024"> <!--Year Selector-->
 
                     <input type="submit"value="Register">
 
@@ -214,9 +175,8 @@ if(isset($_SESSION['email'])){
 
         </main>
 
-        <footer>
-
-        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="blackJack.js"></script>
 
         <script src="someFunctions.js"></script> <!-- Connect JavaScript-->
     </body>
