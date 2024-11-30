@@ -175,6 +175,7 @@ class GameController{
 let newGame;
 let playerDraw;
 let stay;
+let p1, dealer;
 
 //newGameBTN Function: (also sets the other BTNs within) -- public static void main string arrrrgh
 newGame = function Game(bet){
@@ -185,8 +186,8 @@ newGame = function Game(bet){
 	document.getElementById("playerCards").innerHTML = '';
 	
 	//initialize game variables
-	let p1 = new Player("player");
-	let dealer = new Player("dealer");
+	p1 = new Player("player");
+        dealer = new Player("dealer");
 	let deck = new Deck();
 	const game = new GameController(deck);
 	
@@ -224,18 +225,40 @@ newGame = function Game(bet){
 function endGame(bet, p1, dealer){
 	//TODO: implement money/return bet stuff
 	//TODO: add label to display output of game, and disable buttons on game over
-	if(p1.winFlag > dealer.winFlag){
-		bet = bet * 1.5;
-		console.log(`You win! Congratulations!`);
-		console.log(`You won ${bet}!`);
-	}else if(p1.winFlag < dealer.winFlag){
-		bet = 0;
-		console.log(`You lose. Please play again!`);
-	}else{
-		console.log(`Push! You get your bet back.`);
-	}
-	return bet; //TODO: ?might not be needed? need to add bet to user account balance (and subtract from on new game start) - even on a loss should add, as bet is set to 0
-        //openEndGameWindow();
+//	if(p1.winFlag > dealer.winFlag){
+//		bet = bet * 1.5;
+//		console.log(`You win! Congratulations!`);
+//		console.log(`You won ${bet}!`);
+//	}else if(p1.winFlag < dealer.winFlag){
+//		bet = 0;
+//		console.log(`You lose. Please play again!`);
+//	}else{
+//		console.log(`Push! You get your bet back.`);
+//	}
+	//return bet; //TODO: ?might not be needed? need to add bet to user account balance (and subtract from on new game start) - even on a loss should add, as bet is set to 0
+        console.log("reight before update method call");    
+        updateBalance(bet);
+        showEndGameWindow();
+}
+
+async function updateBalance(bet){
+    console.log("in update method");
+    try{
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const response = await fetch("updateBalanceSQL.php",{
+        method: "POST",
+        body: JSON.stringify({updateAmt: bet}),
+        headers: myHeaders,
+    });
+    
+    }catch(e){
+        console.log("in catch");
+        console.error("Error in AJAX function:", e);
+    }
+}
+function showEndGameWindow(){
+    
 }
 
 function dealAnim(card){
