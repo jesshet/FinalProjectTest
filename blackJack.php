@@ -6,8 +6,23 @@ if(isset($_SESSION['email'])){
     //$balance = $_SESSION['balance'];
     $balanceString = "$ ".number_format((float)$_SESSION['balance'], 2);
     $welcomeString = "Welcome, ".$_SESSION['fname']; //This needs to be used somewhere still
+    
+    //if currently logged in set the display in the top right to be the fname and profile picture
+    $topRightDisplay = "<p id=\"displayname\" onclick=\"openDropDown()\">".$_SESSION['fname']."</p>"
+                        ."<div class=\"dropdown\"> "
+                            ."<img src=\"Resources/profile-picture.png\"width=\"35px\" id=\"profilepic\" onclick=\"openDropDown()\">"
+                            ."<div id=\"dropDownMenu\" class=\"dropdown-content\"> "
+                                ."<a href=\"Profile.php\">Profile</a>"
+                                ."<a href=\"Logout.php\">Log Out</a>"
+                            ."</div>"
+                        . "</div>";
+                       
 }else{
     $balanceString = "Please Log In";
+    
+    //if not logged in change the display in the top right to be the login/signup buttons
+    $topRightDisplay = "<button type=\"button\" class=\"btn btn-outline-light mx-2\" onclick=\"closeRegisterForm() + openLoginForm()\">Log In</button>"
+                       ."<button type=\"button\" class=\"btn btn-outline-light mx-2\" onclick=\"closeLoginForm() + openRegisterForm()\">Sign Up</button>";  
 }
 
 ?>
@@ -19,9 +34,10 @@ if(isset($_SESSION['email'])){
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-        <link href="CSS/PageStyle.css"rel="stylesheet">
-        <link href="CSS/PopUp.css"rel="stylesheet">
+        <link href="CSS/MainStyle.css"rel="stylesheet">
+        <link href="CSS/Forms.css"rel="stylesheet">
         <link href="CSS/SideBar.css"rel="stylesheet">
+        <link href="CSS/dropdown.css"rel="stylesheet">
         <link rel="stylesheet" href="./CSS/blackJack.css">
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -34,32 +50,17 @@ if(isset($_SESSION['email'])){
     <body>
 
         <main id="main">
-            <!--side bar (just a bunch of temp links for now)-->
-            <div class="sidebar"id="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">Profile</a>
-                <a href="MainPage.html">Home</a>
-                <a href="#">Funds</a>
-                <a href="#">Card Games</a>
-                <a href="#">Dice Games</a>
-            </div>
-
-            <div class="fixed-top"id="openbtn">
-                <button class=""id="openbtn" onclick="openNav()">&#9776;</button>
-            </div>
-
             <!-- Header Panel with search bar and login/sign up buttons / currency tracking-->
-            <div class="container-fluid mt-2" id="headerpanel">
+            <div class="fixed-top mt-2 ml-4" id="headerpanel">
                 <div class="row">
                      <!--Currency Tracking-->
-                     <div class="col pt-1" id="currency">
-                        <i class="bi bi-cash-coin"></i>
-                        <span id="currentAmount"><?php echo $balanceString;?></span>
+                     <div class="col pt-1" id="currency">  
+                        <p id="moneySymbol"> <i class="bi bi-cash-coin"></i> </p>
+                        <p id="currentAmount"><?php echo $balanceString;?></p>
                     </div>
                     <div class="col" id="userhub">
                         <!-- Login/Signup -->
-                        <button type="button" class="btn btn-outline-light mx-2" onclick="closeRegisterForm() + openLoginForm()">Log In</button>
-                        <button type="button" class="btn btn-outline-light mx-2" onclick="closeLoginForm() + openRegisterForm()">Sign Up</button>    
+                        <?php echo $topRightDisplay; ?>  
                     </div>
                 </div>
             </div>
@@ -178,6 +179,6 @@ if(isset($_SESSION['email'])){
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="blackJack.js"></script>
 
-        <script src="someFunctions.js"></script> <!-- Connect JavaScript-->
+        <script src="MainPageFunctions.js"></script> <!-- Connect JavaScript-->
     </body>
 </html>
