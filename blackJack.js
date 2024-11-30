@@ -167,7 +167,8 @@ class GameController{
 		}else{
 			console.log(`Push! You get your bet back.`);
 		}
-		return bet;
+		//PUT THE GAME OVER WINDOW POP UP HERE//  
+                updateBalance(bet);
 	}
 }
 
@@ -179,6 +180,7 @@ let p1, dealer;
 
 //newGameBTN Function: (also sets the other BTNs within) -- public static void main string arrrrgh
 newGame = function Game(bet){
+        updateBalance(-bet);
 	//on newGame, swap the visible controls and clear any child nodes from dealer and player hands
 	hideStartCTRLS();
 	showGameBTNS();
@@ -221,41 +223,27 @@ newGame = function Game(bet){
 
 }
 
-//global function that calculates bet amount
-function endGame(bet, p1, dealer){
-	//TODO: implement money/return bet stuff
-	//TODO: add label to display output of game, and disable buttons on game over
-//	if(p1.winFlag > dealer.winFlag){
-//		bet = bet * 1.5;
-//		console.log(`You win! Congratulations!`);
-//		console.log(`You won ${bet}!`);
-//	}else if(p1.winFlag < dealer.winFlag){
-//		bet = 0;
-//		console.log(`You lose. Please play again!`);
-//	}else{
-//		console.log(`Push! You get your bet back.`);
-//	}
-	//return bet; //TODO: ?might not be needed? need to add bet to user account balance (and subtract from on new game start) - even on a loss should add, as bet is set to 0
-        console.log("reight before update method call");    
-        updateBalance(bet);
-        showEndGameWindow();
-}
-
 async function updateBalance(bet){
-    console.log("in update method");
-    try{
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const response = await fetch("updateBalanceSQL.php",{
-        method: "POST",
-        body: JSON.stringify({updateAmt: bet}),
-        headers: myHeaders,
-    });
+    var accountBalance = parseFloat(document.getElementById('currentAmount').innerHTML.substring(1).replaceAll(',',''));
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    document.getElementById('currentAmount').innerHTML = "$ " + dollarUSLocale.format(accountBalance + bet);
+    var formData = new FormData();
+    formData.append('updateAmt', bet);
+//    try{
+//    const myHeaders = new Headers();
+//    myHeaders.append("Content-Type", "application/json");
+//    const response = await
+        fetch("./updateBalanceSQL.php",{
+        method: 'POST',
+        //body: JSON.stringify({updateAmt: bet}),
+        body: formData});
+//        headers: myHeaders,
+//    });
     
-    }catch(e){
-        console.log("in catch");
-        console.error("Error in AJAX function:", e);
-    }
+//    }catch(e){
+//        console.log("in catch");
+//        console.error("Error in AJAX function:", e);
+//    }
 }
 function showEndGameWindow(){
     
