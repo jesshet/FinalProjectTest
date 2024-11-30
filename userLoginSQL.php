@@ -17,14 +17,14 @@ $mysqli = mysqli_connect("localhost", "cs213user", "letmein", "finalProject");
 $targetemail = filter_input(INPUT_POST, 'email');
 $targetpasswd = filter_input(INPUT_POST, 'password');
 $stayLoggedIn = filter_input(INPUT_POST, 'stayLoggedIn');
+
 $sql = "SELECT fname, lname, email FROM users WHERE email = '".$targetemail.
         "' AND password = SHA1('".$targetpasswd."')";
 
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 
 //get the number of rows in the result set; should be 1 if a match
-if (mysqli_num_rows($result) == 1) {
-        
+if (mysqli_num_rows($result) == 1) { 
     //new SQL with join to get all their info:
     $sql = "SELECT * FROM users u, user_accounts a WHERE u.id = a.id AND email = '".$targetemail."'";
     $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
