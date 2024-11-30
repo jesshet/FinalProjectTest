@@ -1,0 +1,29 @@
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    transform: translate(-78%, 20%);
+    background-color: #2c2c2c;
+    min-width: 260px;
+    z-index: 2;
+}
+
+.dropdown-content a{
+    color: white;
+    font-size: 24px;
+    padding: 24px 36px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover{
+    background-color: #3c3c3c;
+}
+
+.show{
+    display: block;
+}
