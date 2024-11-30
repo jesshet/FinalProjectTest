@@ -1,0 +1,93 @@
+#leftPanel{
+    margin-left: 20%;
+    margin-right: 50px;
+}
+
+#picGroup{
+    background-color: #2c2c2c;
+    padding: 0 0 40px 0;
+
+    margin-bottom: 10px;
+}
+
+.profileButton{
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+
+    background-color: #2c2c2c;
+    font-size: 18px;
+}
+
+.profileButton:hover{
+    background-color: #3c3c3c;
+}
+
+#profilePicture{
+    margin-top: 25px;
+    padding: 25px;
+}
+
+
+
+#rightPanel{
+    margin-right: 20%;
+    height: 85vh;
+}
+
+#GWL{
+    background-color: #2c2c2c;
+}
+
+.titles{
+    margin-top: 40px;
+    text-decoration: underline;
+}
+
+.gameResults{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.break{
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}
+
+#profileInformation{
+    margin-top: 30px;
+    text-align: left;
+    font-size: 24px;
+
+    background-color: #2c2c2c;
+    padding-bottom: 65px;
+}
+
+#profileTitle{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.profileDataEven{
+    padding-top: 15px;
+    margin: auto;
+    
+}
+.profileDataOdd{
+    padding-top: 15px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.leftText{
+    
+}
+
+.rightText{
+    
+}
+
+
+
