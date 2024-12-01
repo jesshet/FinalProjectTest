@@ -94,15 +94,15 @@ if(isset($_SESSION['email'])){
                             <div class="row">
                                 <div class="col">
                                     <h2 class="titles">Games</h2>
-                                    <p class="gameResults" id="totalGames">0</p>
+                                    <p class="gameResults" id="totalGames"><?php echo $_SESSION['numGames'];?></p>
                                 </div>
                                 <div class="col">
                                     <h2 class="titles">Wins</h2>
-                                    <p class="gameResults" id="totalWins">0</p>
+                                    <p class="gameResults" id="totalWins"><?php echo $_SESSION['wins'];?></p>
                                 </div>
                                 <div class="col">
                                     <h2 class="titles">Losses</h2>
-                                    <p class="gameResults" id="totalLosses">0</p>
+                                    <p class="gameResults" id="totalLosses"><?php echo $_SESSION['losses'];?></p>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Username:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>Default User</p>
+                                                <p><?php echo $_SESSION['email'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +140,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Email:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>DefaultUser@email.com</p>
+                                                <p><?php echo $_SESSION['email'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +150,7 @@ if(isset($_SESSION['email'])){
                                                 <p>First Name:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>Default</p>
+                                                <p><?php echo $_SESSION['fname'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -160,7 +160,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Last Name:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>User</p>
+                                                <p><?php echo $_SESSION['lname'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -170,7 +170,7 @@ if(isset($_SESSION['email'])){
                                                 <p>CurrentMoney:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>1,000,000.00$</p>
+                                                <p><?php echo $_SESSION['balance'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Total Earnings:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>0.00$</p>
+                                                <p><?php echo $_SESSION['totalEarnings'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Win Loss Ratio:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p>0 / 0</p>
+                                                <p id='ratio'>0 / 0</p>
                                             </div>
                                         </div>
                                     </div>
