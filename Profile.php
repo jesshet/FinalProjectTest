@@ -18,10 +18,14 @@ if(isset($_SESSION['email'])){
                                 ."<a href=\"Logout.php\">Log Out</a>"
                             ."</div>"
                         . "</div>";
-                       
+    if($_SESSION['losses'] == 0){
+        $ratio = 100.0;
+    }else{
+        $ratio = $_SESSION['wins'] / $_SESSION['losses'];
+    }            
 }else{
     $balanceString = "Please Log In";
-    
+    $ratio = 0.0;
     //if not logged in change the display in the top right to be the login/signup buttons
     $topRightDisplay = "<button type=\"button\" class=\"btn btn-outline-light mx-2\" onclick=\"closeRegisterForm() + openLoginForm()\">Log In</button>"
                        ."<button type=\"button\" class=\"btn btn-outline-light mx-2\" onclick=\"closeLoginForm() + openRegisterForm()\">Sign Up</button>";  
@@ -94,7 +98,7 @@ if(isset($_SESSION['email'])){
                             <div class="row">
                                 <div class="col">
                                     <h2 class="titles">Games</h2>
-                                    <p class="gameResults" id="totalGames"><?php echo $_SESSION['numGames'];?></p>
+                                    <p class="gameResults" id="totalGames"><?php echo $_SESSION['gamesPlayed'];?></p>
                                 </div>
                                 <div class="col">
                                     <h2 class="titles">Wins</h2>
@@ -190,7 +194,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Win Loss Ratio:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p id='ratio'>0 / 0</p>
+                                                <p id='ratio'><?php echo $ratio;?></p>
                                             </div>
                                         </div>
                                     </div>

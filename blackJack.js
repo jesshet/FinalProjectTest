@@ -153,34 +153,38 @@ class GameController{
 		this.showHand(player);
 		this.setWinFlag(player);
 		this.setWinFlag(dealer);
-		
 		//set amount won/lost and return as 'bet' - originally had in a global function but can go here or wherever
 		document.getElementById("hitMeBTN").disabled = true;
 		document.getElementById("stayBTN").disabled = true;
 		if(p1.winFlag > dealer.winFlag){
 			bet = bet * 1.5;
+                        gameResult = 3;
 			console.log(`You win! Congratulations!`); //these messages might be nice in a popup window like the login prompt, but with a "play again?" prompt that reloads page or goes back to home
 			console.log(`You won ${bet}!`);
 		}else if(p1.winFlag < dealer.winFlag){
 			bet = 0;
+                        gameResult = 1;
 			console.log(`You lose. Please play again!`);
 		}else{
+                        gameResult = 2;
 			console.log(`Push! You get your bet back.`);
 		}
 		//PUT THE GAME OVER WINDOW POP UP HERE//  
-                updateBalance(bet);
+                updateBalance(bet, gameResult);
 	}
 }
 
 //global variables for html buttons to access
 let newGame;
+let gameResult;
 let playerDraw;
 let stay;
 let p1, dealer;
 
 //newGameBTN Function: (also sets the other BTNs within) -- public static void main string arrrrgh
 newGame = function Game(bet){
-        updateBalance(-bet);
+        gameResult = 0;
+        updateBalance(-bet, gameResult);
 	//on newGame, swap the visible controls and clear any child nodes from dealer and player hands
 	hideStartCTRLS();
 	showGameBTNS();
@@ -223,12 +227,13 @@ newGame = function Game(bet){
 
 }
 
-async function updateBalance(bet){
+async function updateBalance(bet, gameResult){
     var accountBalance = parseFloat(document.getElementById('currentAmount').innerHTML.substring(1).replaceAll(',',''));
     let dollarUSLocale = Intl.NumberFormat('en-US');
     document.getElementById('currentAmount').innerHTML = "$ " + dollarUSLocale.format(accountBalance + bet);
     var formData = new FormData();
     formData.append('updateAmt', bet);
+    formData.append('gameResult', gameResult);
 //    try{
 //    const myHeaders = new Headers();
 //    myHeaders.append("Content-Type", "application/json");
