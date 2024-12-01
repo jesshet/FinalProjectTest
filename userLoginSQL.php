@@ -35,7 +35,7 @@ if (mysqli_num_rows($result) == 1) {
                 $balance = stripslashes($info['money']);
                 $wins = stripslashes($info['wins']);
                 $losses = stripslashes($info['losses']);
-                $numGames = stripslashes($info['gamesPlayed']);
+                $gamesPlayed = stripslashes($info['gamesPlayed']);
                 $totalEarnings = stripslashes($info['totalEarnings']);
 	}
         
@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) == 1) {
         $_SESSION['balance'] = $balance;
         $_SESSION['wins'] = $wins;
         $_SESSION['losses'] = $losses;
-        $_SESSION['numGames'] = $numGames;
+        $_SESSION['gamesPlayed'] = $gamesPlayed;
         $_SESSION['totalEarnings'] = $totalEarnings;
         
 	//set authorization cookie using curent Session ID
