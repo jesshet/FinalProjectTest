@@ -93,7 +93,7 @@ class Player{
 	}
 }
 
-class PureFabricationCardDisplayClassCuzVlad{ //this class just creates divs that display the card images and populates the dealer/player hand divs with them
+class CardRenderer{ //this class just creates divs that display the card images and populates the dealer/player hand divs with them
 	displayCard(player, c){
 		var card = document.createElement("div");
 		card.className = "card";
@@ -126,7 +126,7 @@ class PureFabricationCardDisplayClassCuzVlad{ //this class just creates divs tha
 class GameController{
 	constructor(deck){
 		this.deck = deck;
-		this.renderer = new PureFabricationCardDisplayClassCuzVlad();
+		this.renderer = new CardRenderer();
 	}
 	draw(player){
 		let temp = this.deck.draw();
@@ -199,7 +199,7 @@ newGame = function Game(bet){
 	
 	//set function for hitMeBTN
 	playerDraw = function(){ 
-		game.draw(p1)
+		game.draw(p1);
 		if(p1.getHandValue() > 21){
 			//Player bust
 			game.gameOver(bet, p1, dealer);
@@ -207,10 +207,10 @@ newGame = function Game(bet){
 	}
 	//set function for stayBTN
 	stay = function(){ 
-		game.showHand(dealer);
+                game.showHand(dealer);
 		while(dealer.getHandValue() < 17){
-			//on player stay, house plays until its time to call gameOver method
-                            game.draw(dealer);
+		//on player stay, house plays until its time to call gameOver method
+                    game.draw(dealer);
 		}
 		game.gameOver(bet, p1, dealer);
 	}
