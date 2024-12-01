@@ -36,8 +36,8 @@ if(isset($_SESSION['email'])){
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-        <link href="CSS/MainStyle.css"rel="stylesheet">
-        <link href="CSS/Forms.css"rel="stylesheet">
+        <link href="CSS/MainStyles.css"rel="stylesheet">
+        <link href="CSS/FormStyle.css"rel="stylesheet">
         <link href="CSS/SideBar.css"rel="stylesheet">
         <link href="CSS/dropdown.css"rel="stylesheet">
         
@@ -57,7 +57,8 @@ if(isset($_SESSION['email'])){
             <div class="fixed-top mt-2 ml-4" id="headerpanel">
                 <div class="row">
                      <!--Currency Tracking-->
-                     <div class="col pt-1" id="currency">  
+                     <div class="col pt-1" id="currency">
+                        <a href="MainPage.php" id="homeButton"> <i class="bi bi-house-fill"></i> </a>
                         <p id="moneySymbol"> <i class="bi bi-cash-coin"></i> </p>
                         <p id="currentAmount"><?php echo $balanceString;?></p>
                     </div>
@@ -157,25 +158,25 @@ if(isset($_SESSION['email'])){
             <!--Popup For Registration-->
             <div class="form-popup" id="registerform">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeRegisterForm()">&times;</a>
-                <form action="userRegisterSQL.php" method="POST">
+                <form action="userRegisterSQL.php" method="POST" onsubmit="return validateForm()">
                     <h1>Join Us Today!</h1>
                     
                     <p id="errorMessage">Test</p>
                     
                     <label for="fname"><b>First name</b></label>
-                    <input type="text" placeholder="First name" name="fname" id="fname" required> <br> 
+                    <input type="text" placeholder="First name" name="fname" id="fname" required pattern="[a-zA-Z]+" oninvalid="setCustomValidity('Name must contain only letters')"> <br> 
 
                     <label for="lname"><b>Last name</b></label>
-                    <input type="text" placeholder="Last name" name="lname" id="lname" required> <br> 
+                    <input type="text" placeholder="Last name" name="lname" id="lname" required pattern="[a-zA-Z]+" oninvalid="setCustomValidity('Name must contain only letters')"> <br> 
 
                     <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Enter Email" name="email" id="email" required> <br> 
+                    <input type="email" placeholder="Enter Email" name="email" id="email" required pattern='^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,63}$' oninvalid="setCustomValidity('Please enter a valid email')"> <br> 
                     
                     <label for="pass"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" id="pass" required> <br> 
+                    <input type="password" placeholder="Enter Password" name="password" id="pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> <br> 
 
                     <label for="dateOfBirth"><b>Date of Birth</b></label> <br>
-                    <input class="dateSelector" name="dayOfBirth" type="number"min="1"max="31"placeholder="1"> <!--Day Selector-->
+                    <input class="dateSelector" name="dayOfBirth" type="number"min="1"max="31"placeholder="1" required> <!--Day Selector-->
                     <select name="month" id="month">
                         <option value="1">Jan</option>
                         <option value="2">Feb</option>
@@ -190,7 +191,7 @@ if(isset($_SESSION['email'])){
                         <option value="11">Nov</option>
                         <option value="12">Dec</option>
                     </select> <!--Month Selector-->
-                    <input class="dateSelector" name="yearOfBirth" type="number"min="1900"max="2025"placeholder="2024"> <!--Year Selector-->
+                    <input class="dateSelector" name="yearOfBirth" type="number"min="1900"max="2025"placeholder="2024" required> <!--Year Selector-->
 
                     <input type="submit"value="Register">
 

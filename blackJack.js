@@ -171,6 +171,18 @@ class GameController{
 		}
 		//PUT THE GAME OVER WINDOW POP UP HERE//  
                 updateBalance(bet, gameResult);
+                if(gameResult === 3){
+                    document.getElementById("gameResult").innerHTML="You Win!";
+                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                }else if(gameResult === 1){
+                    document.getElementById("gameResult").innerHTML="You Lose.";
+                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                }else{
+                    document.getElementById("gameResult").innerHTML="It's a Draw.";
+                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                }
+                
+                document.getElementById("playAgain").style.display="block"
 	}
 }
 

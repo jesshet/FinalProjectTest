@@ -1,0 +1,139 @@
+/* form popup */
+.overlay {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6); 
+  display: none;
+}
+
+#errorMessage{
+    text-align: center;
+    font-size: 24;
+    color: red;
+    transform: translate(0%, 50%);
+}
+
+.form-popup{
+    display:none;
+    position: fixed;
+    max-height: 90%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    z-index: 3;
+
+    padding: 50px 20px 70px 20px;
+    background-color: #1c1c1c;
+    border-radius: 20px;
+  }
+  .form-popup .closebtn{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 32px;
+    color: #818181;
+    text-decoration: none;
+  }
+  .form-popup h1{
+    text-align: center;
+    padding: 10px;
+  }
+  .form-popup label,
+  .form-popup input[type=checkbox]{
+    padding-top: 10px;
+  }
+  .form-popup input[type=text],
+  .form-popup input[type=password],
+  .form-popup input[type=email]{
+    width: 100%;
+    background-color: rgb(28,28,28);
+    padding: 10px;
+    border-color: whitesmoke;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+  .form-popup input[type=number],
+  .form-popup select{
+    text-align: center;
+    margin: 1px;
+    width: 31%;
+    background-color: rgb(28,28,28);
+    padding: 10px;
+    border-color: whitesmoke;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+  .form-popup input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  .form-popup .forgot{
+    color: #818181;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  /* Manage Size of Popups */
+  @media only screen and (min-width: 0px) and (max-width: 730px){.form-popup{width: 70%;}}
+  @media only screen and (min-width: 730px) and (max-width: 905px){.form-popup{width: 60%;}}
+  @media only screen and (min-width: 905px){
+    .form-popup{
+      padding: 70px 100px 70px 100px;
+      width: 600px;
+      border-radius: 20px;
+    }
+  }
+  .form-popup input[type=submit] {
+    background-color: #f34a55;
+    color: white;
+  
+    padding: 16px 20px;
+    margin-top:40px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 1;
+  }
+  .form-popup .swapmenu{
+    color:lightslategray;
+    text-decoration: none;
+    opacity: 1;
+  }
+  .form-popup .swapmenu:hover{
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .form-popup input[type=submit]:hover,
+  .form-popup .forgot a{
+    opacity: 0.8;
+  }
+  
+  #playAgain{
+    text-align: center;
+}
+
+#playAgain p{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.menuButton{
+    margin: 30px 15px 0 15px;
+    background-color: #f34a55;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.menuButton:hover{
+    opacity: 0.8;
+}
+  
+  
+  
