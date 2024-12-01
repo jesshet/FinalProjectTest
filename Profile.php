@@ -18,7 +18,12 @@ if(isset($_SESSION['email'])){
                                 ."<a href=\"Logout.php\">Log Out</a>"
                             ."</div>"
                         . "</div>";
-                       
+    
+    if($_SESSION['losses'] == 0){
+        $ratio = $_SESSION['wins'] / 1;
+    }else{
+        $ratio = $_SESSION['wins'] / $_SESSION['losses'];
+    }            
 }else{
     $balanceString = "Please Log In";
     
