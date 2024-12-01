@@ -19,7 +19,7 @@ if(isset($_SESSION['email'])){
                             ."</div>"
                         . "</div>";
     if($_SESSION['losses'] == 0){
-        $ratio = 100.0;
+        $ratio = $_SESSION['wins'] / 1;
     }else{
         $ratio = $_SESSION['wins'] / $_SESSION['losses'];
     }            

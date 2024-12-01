@@ -44,7 +44,7 @@ if (mysqli_num_rows($result) == 1) {
         //fetch the id we used from the select statement
         $id = stripslashes($info['id']);
     }
-    $sql = "INSERT INTO user_accounts VALUES(".$id.", 50000, 0, 0, 0)";
+    $sql = "INSERT INTO user_accounts VALUES(".$id.", 50000, 0, 0, 0, 0)";
     $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
     header("Location: MainPage.php");
     exit;
