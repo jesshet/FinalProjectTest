@@ -173,13 +173,13 @@ class GameController{
                 updateBalance(bet, gameResult);
                 if(gameResult === 3){
                     document.getElementById("gameResult").innerHTML="You Win!";
-                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                    document.getElementById("moneyChange").innerHTML="You have gained $ " + decFormat.format(bet);
                 }else if(gameResult === 1){
                     document.getElementById("gameResult").innerHTML="You Lose.";
-                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                    document.getElementById("moneyChange").innerHTML="You have gained $ " + decFormat.format(bet);
                 }else{
                     document.getElementById("gameResult").innerHTML="It's a Draw.";
-                    document.getElementById("moneyChange").innerHTML="You have gained $" + bet;
+                    document.getElementById("moneyChange").innerHTML="You have gained $ " + decFormat.format(bet);
                 }
                 
                 document.getElementById("playAgain").style.display="block"
@@ -192,6 +192,12 @@ let gameResult;
 let playerDraw;
 let stay;
 let p1, dealer;
+//number formatter placed here in order to not reuse code
+let decFormat = Intl.NumberFormat('en-US', {
+        style: "decimal",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+});
 
 //newGameBTN Function: (also sets the other BTNs within) -- public static void main string arrrrgh
 newGame = function Game(bet){
@@ -240,9 +246,9 @@ newGame = function Game(bet){
 }
 
 async function updateBalance(bet, gameResult){
-    var accountBalance = parseFloat(document.getElementById('currentAmount').innerHTML.substring(1).replaceAll(',',''));
-    let dollarUSLocale = Intl.NumberFormat('en-US');
-    document.getElementById('currentAmount').innerHTML = "$ " + dollarUSLocale.format(accountBalance + bet);
+    var accountBalance = parseFloat(document.getElementById('currentAmount').innerHTML.substring(1).replaceAll(',','').replaceAll('$',''));
+
+    document.getElementById('currentAmount').innerHTML = "$ " + decFormat.format(accountBalance + bet);
     var formData = new FormData();
     formData.append('updateAmt', bet);
     formData.append('gameResult', gameResult);
