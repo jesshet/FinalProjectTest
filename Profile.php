@@ -87,7 +87,7 @@ if(isset($_SESSION['email'])){
                     <div class="col-2"id="leftPanel">
                         <div id="picGroup">
                             <img src="Resources/profile-picture.png"width="250px"id="profilePicture">
-                            <h1 id="Username">Default User</h1>
+                            <h1 id="Username"><?php echo $_SESSION['fname']." ".$_SESSION['lname'];?></h1>
                         </div>
                         <button class="profileButton"> Change Profile Picture </button>
                         <button class="profileButton"> Change Password </button>
@@ -176,7 +176,7 @@ if(isset($_SESSION['email'])){
                                                 <p>CurrentMoney:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p><?php echo $_SESSION['balance'];?></p>
+                                                <p>$ <?php echo number_format($_SESSION['balance'], 2);?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +186,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Total Earnings:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p><?php echo $_SESSION['totalEarnings'];?></p>
+                                                <p>$ <?php echo number_format($_SESSION['totalEarnings'], 2);?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ if(isset($_SESSION['email'])){
                                                 <p>Win Loss Ratio:</p>
                                             </div>
                                             <div class="col text-end rightText">
-                                                <p id='ratio'><?php echo $ratio;?></p>
+                                                <p id='ratio'><?php echo number_format($ratio, 2);?></p>
                                             </div>
                                         </div>
                                     </div>
